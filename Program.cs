@@ -23,9 +23,13 @@ namespace GuessingGame
                     Console.WriteLine("Correct! You guessed it!");
                     break;
                 }
-                else
+                else if (secretNum < userGuessInt)
                 {
-                    Console.WriteLine("Try Again!");
+                    Console.WriteLine("Too high! Try Again!");
+                }
+                else if (secretNum > userGuessInt)
+                {
+                    Console.WriteLine("Too low! Try Again!");
                 }
                 guessesRemaining--;
                 guessesGiven++;
