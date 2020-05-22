@@ -10,29 +10,92 @@ namespace GuessingGame
 
             int guessesGiven = 0;
             int secretNum = rand.Next(1, 101);
-            int guessesRemaining = 4;
-            while (guessesGiven < 4)
+
+            Console.WriteLine("Select a difficulty: Easy, Medium, or Hard");
+            string userDifficulty = Console.ReadLine();
+            if (userDifficulty.Contains("Easy") || userDifficulty.Contains("easy"))
             {
-                Console.WriteLine($"Guess a number. Remaining guesses: {guessesRemaining}");
+                int guessesRemaining = 8;
 
-                string userGuess = Console.ReadLine();
-                int userGuessInt = Int32.Parse(userGuess);
+                while (guessesGiven < 8)
+                {
+                    Console.WriteLine($"Guess a number. Remaining guesses: {guessesRemaining}");
 
-                if (secretNum == userGuessInt)
-                {
-                    Console.WriteLine("Correct! You guessed it!");
-                    break;
+                    string userGuess = Console.ReadLine();
+                    int userGuessInt = Int32.Parse(userGuess);
+
+                    if (secretNum == userGuessInt)
+                    {
+                        Console.WriteLine("Correct! You guessed it!");
+                        break;
+                    }
+                    else if (secretNum < userGuessInt)
+                    {
+                        Console.WriteLine("Too high! Try Again!");
+                    }
+                    else if (secretNum > userGuessInt)
+                    {
+                        Console.WriteLine("Too low! Try Again!");
+                    }
+                    guessesRemaining--;
+                    guessesGiven++;
                 }
-                else if (secretNum < userGuessInt)
+            }
+            else if (userDifficulty.Contains("Medium") || userDifficulty.Contains("medium"))
+            {
+                int guessesRemaining = 6;
+
+                while (guessesGiven < 6)
                 {
-                    Console.WriteLine("Too high! Try Again!");
+                    Console.WriteLine($"Guess a number. Remaining guesses: {guessesRemaining}");
+
+                    string userGuess = Console.ReadLine();
+                    int userGuessInt = Int32.Parse(userGuess);
+
+                    if (secretNum == userGuessInt)
+                    {
+                        Console.WriteLine("Correct! You guessed it!");
+                        break;
+                    }
+                    else if (secretNum < userGuessInt)
+                    {
+                        Console.WriteLine("Too high! Try Again!");
+                    }
+                    else if (secretNum > userGuessInt)
+                    {
+                        Console.WriteLine("Too low! Try Again!");
+                    }
+                    guessesRemaining--;
+                    guessesGiven++;
                 }
-                else if (secretNum > userGuessInt)
+            }
+            else if (userDifficulty.Contains("Hard") || userDifficulty.Contains("hard"))
+            {
+                int guessesRemaining = 4;
+
+                while (guessesGiven < 4)
                 {
-                    Console.WriteLine("Too low! Try Again!");
+                    Console.WriteLine($"Guess a number. Remaining guesses: {guessesRemaining}");
+
+                    string userGuess = Console.ReadLine();
+                    int userGuessInt = Int32.Parse(userGuess);
+
+                    if (secretNum == userGuessInt)
+                    {
+                        Console.WriteLine("Correct! You guessed it!");
+                        break;
+                    }
+                    else if (secretNum < userGuessInt)
+                    {
+                        Console.WriteLine("Too high! Try Again!");
+                    }
+                    else if (secretNum > userGuessInt)
+                    {
+                        Console.WriteLine("Too low! Try Again!");
+                    }
+                    guessesRemaining--;
+                    guessesGiven++;
                 }
-                guessesRemaining--;
-                guessesGiven++;
             }
         }
     }
