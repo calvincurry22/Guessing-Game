@@ -11,7 +11,7 @@ namespace GuessingGame
             int guessesGiven = 0;
             int secretNum = rand.Next(1, 101);
 
-            Console.WriteLine("Select a difficulty: Easy, Medium, or Hard");
+            Console.WriteLine("Select a difficulty: Easy, Medium, Hard, or Cheater");
             string userDifficulty = Console.ReadLine();
             if (userDifficulty.Contains("Easy") || userDifficulty.Contains("easy"))
             {
@@ -97,6 +97,31 @@ namespace GuessingGame
                     guessesGiven++;
                 }
             }
+            else if (userDifficulty.Contains("Cheater") || userDifficulty.Contains("cheater"))
+            {
+                while (true)
+                {
+                    Console.WriteLine($"Guess a number");
+
+                    string userGuess = Console.ReadLine();
+                    int userGuessInt = Int32.Parse(userGuess);
+
+                    if (secretNum == userGuessInt)
+                    {
+                        Console.WriteLine("Correct! You guessed it!");
+                        return;
+                    }
+                    else if (secretNum < userGuessInt)
+                    {
+                        Console.WriteLine("Too high! Try Again!");
+                    }
+                    else if (secretNum > userGuessInt)
+                    {
+                        Console.WriteLine("Too low! Try Again!");
+                    }
+                }
+            }
+
         }
     }
 }
